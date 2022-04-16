@@ -1,35 +1,65 @@
+<script setup>
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import DefaultLayout from '@/layouts/Default'
+import PublicLayout from '@/layouts/Public'
+
+const route = useRoute()
+const layout = computed(() => route.meta.public ? PublicLayout : DefaultLayout)
+
+</script>
+
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link>
-    <router-link to="/pages/login">Pages / Login</router-link>
-    <router-link to="/pages/profile">Pages / Profile</router-link>
-    <router-link to="/components">Components / Index</router-link>
-    <router-link to="/components/toasts">Components / Toasts</router-link>
-  </div>
-  <router-view/>
+  <component :is="layout">
+    <transition name="fade-slide" mode="out-in">
+      <router-view v-slot="{ Component }">
+        <component :is="Component" />
+      </router-view>
+    </transition>
+  </component>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/helpers";
+@import "~bootstrap/scss/utilities/api";
+
+html {
+  font-size: 16px;
 }
 
-#nav {
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+body {
+  font-size: 100%;
+  background-color: $body-bg;
+  color: $body-color;
+  overflow-x: hidden;
 }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 0.5s;
+}
+
+.fade-slide-enter,
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
 </style>
