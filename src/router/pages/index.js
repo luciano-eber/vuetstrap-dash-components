@@ -1,15 +1,23 @@
-export default [
-  {
-    path: '/pages/login',
-    name: 'Login',
-    component: () => import('../../views/pages/Login.vue'),
-    meta: {
-      public: true
-    }
-  },
-  {
-    path: '/pages/profile',
-    name: 'Profile',
-    component: ()=> import('../../views/pages/Profile.vue')
+import { RouteGroup } from '@/helpers/router'
+
+const group = new RouteGroup({
+  basePath: 'pages', 
+  baseViews: 'views/pages'
+})
+
+group.addRoute({
+  path: 'login',
+  name: 'Login',
+  component: 'Login.vue' ,
+  meta: {
+    public: true
   }
-]
+})
+
+group.addRoute({
+  path: 'profile',
+  name: 'Profile',
+  component: 'Profile.vue'
+})
+
+export default group.routes

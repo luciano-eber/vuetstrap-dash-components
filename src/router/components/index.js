@@ -1,18 +1,21 @@
-import componentRoute from './route'
+import { RouteGroup } from '@/helpers/router'
 
-const index = new componentRoute({
+const group = new RouteGroup({
+  basePath: 'components', 
+  baseViews: 'views/components'
+})
+
+group.addRoute({
   path: '',
   name: 'Components',
   component: 'Index.vue'
 })
 
-const toasts = new componentRoute({
+group.addRoute({
   path: 'toasts',
   name: 'Toasts',
   component: 'Toasts.vue'
 })
 
-export default [
-  index,
-  toasts
-]
+
+export default group.routes
