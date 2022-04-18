@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
-import pagesRoutes from './pages/index'
-import componentsRoutes from './components/index'
+import pagesRoutes from './routes/pages.js'
+import componentsRoutes from './routes/components.js'
+import store from '@/store'
 
 let routes = [
   {
@@ -9,6 +10,11 @@ let routes = [
     name: 'Dash',
     component: Dashboard
   },
+  {
+    path: '/icons',
+    name: 'Icons',
+    component: () => import('@/views/Icons.vue')
+  }
 ]
 
 routes = routes.concat(
@@ -19,6 +25,14 @@ routes = routes.concat(
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to) => {
+
+  if (store.state.defaultLayout.sidebarIsActive) 
+    store.dispatch('defaultLayout/closeSidebar')
+
+  return true
 })
 
 export default router

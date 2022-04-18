@@ -1,21 +1,49 @@
+<script setup>
+import { computed } from 'vue'
+import Sidebar from './default/Sidebar.vue'
+import Header from './default/Header.vue'
+import { useStore } from 'vuex'
+
+const store = useStore()
+
+const sidebarIsActive = computed(() => store.getters['defaultLayout/sidebarIsActive'])
+
+function toggleSidebar () {
+  store.dispatch('defaultLayout/toggleSidebar')
+}
+
+</script>
+
 <template>
   <div>
-    <div id="nav">
-      <router-link to="/">Home</router-link>
-      <router-link to="/about">About</router-link>
-      <router-link to="/pages/login">Pages / Login</router-link>
-      <router-link to="/pages/profile">Pages / Profile</router-link>
-      <router-link to="/components">Components / Index</router-link>
-      <router-link to="/components/toasts">Components / Toasts</router-link>
+    <Sidebar :isActive="sidebarIsActive" />
+    <div class="page pb-5">
+      <Header :isActive="sidebarIsActive" @toggleSidebar="toggleSidebar"/>
+      <main class="main pt-5">
+        <div class="container-fluid">
+          <slot></slot>
+        </div>
+      </main>
     </div>
-    <slot></slot>
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #nav {
   padding: 30px;
   display: flex;
   flex-direction: column;
+}
+.logo {
+  width: 30px;
+}
+.main {
+  position: relative;
+  top: 5rem;
+}
+.page {
+  @media(min-width: map-get($grid-breakpoints, 'xxl')) {
+    padding-left: $sidebar-width-xxl;
+  }
 }
 </style>

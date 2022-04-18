@@ -1,3 +1,6 @@
+// Default Layout variables
+$sidebar-width: 16rem;
+$sidebar-width-xxl: 17rem;
 // Variables
 //
 // Variables should follow the `$component-state-property-size` formula for
@@ -401,7 +404,7 @@ $position-values: (
 //
 // Settings for the `<body>` element.
 
-$body-bg:                   $white !default;
+$body-bg:                   $gray-100 !default;
 $body-color:                $gray-900 !default;
 $body-text-align:           null !default;
 
@@ -500,7 +503,7 @@ $container-max-widths: (
 // Set the number of columns and specify the width of the gutters.
 
 $grid-columns:                12 !default;
-$grid-gutter-width:           1.5rem !default;
+$grid-gutter-width:           2.5rem !default;
 $grid-row-columns:            6 !default;
 
 $gutters: $spacers !default;

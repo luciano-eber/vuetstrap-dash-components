@@ -14,7 +14,8 @@ import {
   faExternalLink,
   faTrash,
   faUserCircle,
-  faSignOut
+  faSignOut,
+  faFontAwesome
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faBlogger } from '@fortawesome/free-brands-svg-icons'
@@ -35,7 +36,8 @@ library.add(
   faExternalLink,
   faTrash,
   faUserCircle,
-  faSignOut
+  faSignOut,
+  faFontAwesome
 )
 
 dom.watch()

@@ -4,9 +4,9 @@ import DefaultPage from '@/components/DefaultPage'
 </script>
 
 <template>
-  <DefaultPage title="Toasts" :breadcrumbs="[{name: 'Components'}]">
+  <DefaultPage title="Icons">
     <template #content>
-      Components Toasts
+      Icons powered by fontawesome
     </template>
   </DefaultPage>
 </template>

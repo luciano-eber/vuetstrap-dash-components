@@ -1,9 +1,12 @@
 <script setup>
+import DefaultPage from '@/components/DefaultPage'
 
 </script>
 
 <template>
-  <div>
-    Components Index
-  </div>
+  <DefaultPage title="Components">
+    <template #content>
+      Components
+    </template>
+  </DefaultPage>
 </template>

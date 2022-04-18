@@ -10,13 +10,15 @@ const layout = computed(() => route.meta.public ? PublicLayout : DefaultLayout)
 </script>
 
 <template>
+<transition name="fade" mode="out-in">
   <component :is="layout">
-    <transition name="fade-slide" mode="out-in">
       <router-view v-slot="{ Component }">
-        <component :is="Component" />
+        <transition name="fade-slide" mode="out-in">
+          <component :is="Component" />
+        </transition>
       </router-view>
-    </transition>
   </component>
+</transition>
 </template>
 
 <style lang="scss">
@@ -61,5 +63,4 @@ body {
   opacity: 0;
   transform: translateY(50px);
 }
-
 </style>

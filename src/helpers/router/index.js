@@ -9,7 +9,7 @@ export class Route {
   }
   
   get path() {
-    return `/${this.basePath}/${this._path}/`
+    return `/${this.basePath}/${this._path}`
   }
   
   get name() {
