@@ -19,7 +19,7 @@ function toggleSidebar () {
     <Sidebar :isActive="sidebarIsActive" />
     <div class="page pb-5">
       <Header :isActive="sidebarIsActive" @toggleSidebar="toggleSidebar"/>
-      <main class="main pt-5">
+      <main class="main pt-5 pb-5">
         <div class="container-fluid">
           <slot></slot>
         </div>
