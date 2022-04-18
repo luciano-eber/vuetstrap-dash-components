@@ -28,6 +28,7 @@ const layout = computed(() => route.meta.public ? PublicLayout : DefaultLayout)
 @import "~bootstrap/scss/containers";
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/card";
 @import "~bootstrap/scss/transitions";
 @import "~bootstrap/scss/close";
 @import "~bootstrap/scss/helpers";
